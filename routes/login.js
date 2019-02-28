@@ -1,36 +1,25 @@
-var express = require('express')
+//处理用户登陆请求
+var express = require('express');
 var router = express.Router();
-var {
-  find,
-  add,
-  del,
-  change
-}=require("../public/lib/mongo.js");
-var token=require("../public/lib/token");
+
+//请求登陆页面
 router.get('/', function (req, res, next) {
   res.render('login');
 });
-//登录路由
-router.post("/user",async(req,res,next)=>{
-  let{
-    user,
-    pwd
-  }=req.body
-  let data =await find('user',{
-    name:user,
-  })
-  if(data[0].password===pwd){
-    res,send({
-      status:"success",
-      token:token.createToken({
-        user,
-      },300)
-    })
-  }else{
-    res.send({
-      status:"fail"
-    });
-  }
-});
-//验证用户路由
+
+//用户登陆请求
+router.post('/dl', function (req, res) {
+  console.log("用户登陆请求开始处理")
+  var login_dl = require('../my_modules/login_dl');
+  console.log("登陆处理模块")
+  login_dl(req, res);
+})
+
+//用户退出请求
+router.post('/tc', function (req, res) {
+  res.json(JSON.stringify("ok"));
+})
+
+
+
 module.exports = router;
