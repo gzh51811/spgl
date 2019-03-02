@@ -7,7 +7,7 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var usersRouter = require('./routes/user');
 var loginRouter = require('./routes/login');
 
 var app = express();
@@ -41,7 +41,7 @@ app.use(session({
   saveUninitialized: false,
   secret: 'trwetwyacfdagy',
   cookie: {
-    maxAge: 1000 * 60 * 30, // 设置 session 的有效时间，单位毫秒
+    maxAge: 1000 * 60 * 120, // 设置 session 的有效时间，单位毫秒
   }
 }));
 
@@ -70,7 +70,7 @@ app.use(function (req, res, next) {
 
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
-app.use('/users', usersRouter);
+app.use('/user', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

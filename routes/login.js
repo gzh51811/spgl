@@ -17,6 +17,7 @@ router.post('/dl', function (req, res) {
 
 //用户退出请求
 router.post('/tc', function (req, res) {
+  req.session.email = null; // 删除session
   res.json(JSON.stringify("ok"));
 })
 
