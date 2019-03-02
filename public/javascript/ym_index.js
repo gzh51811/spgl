@@ -44,11 +44,17 @@ function index_sjxr() {
         }
     });
 
-    // console.log(sx)
+    console.log(sx)
 
-    $.get("/ycsj", {
-        sjnr: sx
-    }, function (data, status) {
-        console.log(data)
-    });
+    // 隐藏所有内容
+    $("#page-wrapper>div").css("display", "none");
+
+    if (sx == "数据概览") {
+        $("#index_sjgl").css("display", "block");
+    } else if (sx == "全部商品") {
+        $("#index_qbsp").css("display", "block");
+    } else if (sx == "全部订单") {
+        $("#index_qbdd").css("display", "block");
+    }
 }
+
