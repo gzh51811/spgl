@@ -30,20 +30,36 @@ router.get('/ycsj', function (req, res, next) {
 
   if (sjnr == "数据概览") {
 
-    console.log("用户登陆请求开始处理")
-    var index_gl = require('../my_modules/index/index_gl');
-    index_gl(req, res);
-
 
   } else if (sjnr == "全部商品") {
-    var index_sp = require('../my_modules/index/index_sp');
-    index_sp(req, res);
+
 
   } else if (sjnr == "全部订单") {
-    var index_dd = require('../my_modules/index/index_dd');
-    index_dd(req, res);
+
 
   }
 });
+
+router.post('/ycsj', function (req, res, next) {
+  console.log(req.body.sjnr)
+  var sjnr = req.body.sjnr;
+
+  if (sjnr == "数据概览") {
+
+  } else if (sjnr == "全部商品") {
+
+    if (req.body.qqsj == "fbsp") {
+
+      console.log("请求为发布商品")
+      var index_fbsp = require('../my_modules/index/index_fbsp');
+      index_fbsp(req, res);
+
+    }
+
+  } else if (sjnr == "全部订单") {
+
+  }
+
+})
 
 module.exports = router;
