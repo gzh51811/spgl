@@ -58,3 +58,15 @@ function index_sjxr() {
     }
 }
 
+//点击按钮获取内容
+$("#myTab").on("click", "li", function (e) {
+    let liCotent = $(this).text();
+    console.log(liCotent)
+    $.post("/ycsj", {
+        sjnr: liCotent,
+    },
+    function (data, status) {
+
+    })
+
+})

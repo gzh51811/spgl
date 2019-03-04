@@ -45,5 +45,17 @@ router.get('/ycsj', function (req, res, next) {
 
   }
 });
-
+router.post("/ycsj", function (req, res, next) {
+  console.log(req.body.sjnr)
+  var sjnr = req.body.sjnr;
+  res.json("aa")
+  // if ("sjnr" == "" || "所有订单") {
+  //   console.log("请求所有订单")
+  //   var index_cha = require("../my_modules/index/index_chaxu");
+  //   index_cha(req,res)
+  // }else if("sjnr"=="待付款"){
+  //   var index_cha = require("../my_modules/index/index_chaxu");
+  //   index_cha(req,res)
+  // }
+})
 module.exports = router;
