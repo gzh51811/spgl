@@ -111,14 +111,16 @@
                     <nav class="navbar navbar-default">
                         <div class="container-fluid">
 
-                            <div class="btn-group navbar-btn navbar-left" data-toggle="buttons" style="margin-right:30px">
-                                <label class="btn btn-default active">
-                                    <input type="radio" name="options" id="option1" autocomplete="off" checked> 全部商品
+                            <div class="btn-group navbar-btn navbar-left" data-toggle="buttons" style="margin-right:30px"
+                                id="index_spzt">
+                                <label class="btn btn-default active" spzt="all">
+                                    <input type="radio" name="options" id="option1" autocomplete="off" checked>
+                                    全部商品
                                 </label>
-                                <label class="btn btn-default">
+                                <label class="btn btn-default" spzt="csz">
                                     <input type="radio" name="options" id="option2" autocomplete="off"> 出售中
                                 </label>
-                                <label class="btn btn-default">
+                                <label class="btn btn-default" spzt="yxj">
                                     <input type="radio" name="options" id="option3" autocomplete="off"> 已下架
                                 </label>
                             </div>
@@ -127,9 +129,9 @@
 
                             <form class="navbar-form navbar-left" role="search">
                                 <div class="input-group">
-                                    <input id="" type="text" class="form-control" aria-label="Text input with segmented button dropdown">
+                                    <input id="index_spssl" type="text" class="form-control" aria-label="Text input with segmented button dropdown">
                                     <div class="input-group-btn">
-                                        <button type="button" class="btn btn-default" id="">搜索</button>
+                                        <button type="button" class="btn btn-default" id="index_splbss">搜索</button>
                                     </div>
                                 </div><!-- /.input-group -->
                             </form>
@@ -138,9 +140,10 @@
 
                             <button type="button" class="btn btn-primary navbar-btn navbar-right" data-toggle="modal"
                                 data-target="#indextjsp" style="margin-right: 0;">发布商品</button>
-                            <button id="" type="button" class="btn btn-default navbar-btn navbar-right" style="margin-right: 15px;">上架</button>
-                            <button id="" type="button" class="btn btn-default navbar-btn navbar-right" style="margin-right: 15px;">删除</button>
-                            <button id="" type="button" class="btn btn-default navbar-btn navbar-right" style="margin-right: 15px;">刷新</button>
+                            <button id="index_splbdxsj" type="button" class="btn btn-default navbar-btn navbar-right"
+                                style="margin-right: 15px;">上架</button>
+                            <button id="index_splbczsx" type="button" class="btn btn-default navbar-btn navbar-right"
+                                style="margin-right: 15px;">重置刷新</button>
 
                         </div>
 
@@ -149,27 +152,52 @@
 
                     <table class="table table-hover">
 
-                        <thead>
+                        <thead class="index_lbdhl">
                             <tr>
-                                <th>#</th>
+                                <th>
+                                    <label style="margin:0px;">
+                                        <input type="checkbox" style="margin:0px;" id="index_splb_dx">
+                                    </label>
+                                </th>
                                 <th>商品图</th>
                                 <th>商品名称</th>
-                                <th>价格</th>
-                                <th>库存</th>
-                                <th>总销量</th>
-                                <th>发布时间</th>
+                                <th class="index_lbdhl_px" pxzd="spjg">
+                                    <span>价格</span>
+                                    <span>▼</span>
+                                </th>
+                                <th class="index_lbdhl_px" pxzd="spkc">
+                                    <span>库存</span>
+                                    <span>▼</span>
+                                </th>
+                                <th class="index_lbdhl_px" pxzd="spxl">
+                                    <span>总销量</span>
+                                    <span>▼</span>
+                                </th>
+                                <th class="index_lbdhl_px" pxzd="fbsj">
+                                    <span>发布时间</span>
+                                    <span>▼</span>
+                                </th>
                                 <th>操作</th>
                             </tr>
                         </thead>
 
-                        <tbody id="" class="index_splb">
-                            <tr>
-                                <td>1</td>
+                        <tbody id="index_splbsj" class="index_splb">
+
+
+                            <!-- <tr>
+                                <td>
+                                    <label style="margin:0px;">
+                                        <input type="checkbox" style="margin:0px;">
+                                    </label>
+                                </td>
                                 <td>
                                     <img src="spt/26355794.jfif" alt="">
                                 </td>
                                 <td>aljgak gaskjgaogn algajsoa agoja</td>
-                                <td>￥3458-445463</td>
+                                <td>
+                                    <span>￥</span>
+                                    <span>${n.spjg}</span>
+                                </td>
                                 <td>12415</td>
                                 <td>3257</td>
                                 <td>2019-12-1 16:12</td>
@@ -177,10 +205,51 @@
                                     <button type="button" class="btn btn-default btn-xs userbjyh_tc">编辑商品</button>
                                     <button type="button" class="btn btn-default btn-xs userbjyh_tc">下架</button>
                                 </td>
-                            </tr>
+                            </tr> -->
+
                         </tbody>
 
                     </table>
+                    <!-- 等待动画 -->
+
+                    <div class="index_login" style="display:block">
+                        <div class="loader loader--style1" title="loading...">
+                            <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40"
+                                xml:space="preserve">
+                                <path opacity="0.2" fill="#000" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946
+                  s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634
+                  c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z" />
+                                <path fill="#000" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0
+                  C22.32,8.481,24.301,9.057,26.013,10.047z">
+                                    <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20"
+                                        to="360 20 20" dur="0.5s" repeatCount="indefinite" />
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <nav aria-label="Page navigation" style="display:none;" id="index_fybq" class="pull-right">
+                        <ul class="pagination">
+                            <!-- <li class="index_kxym_qf">
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="index_kxym index_kxym_bh active"><a href="#">1</a></li>
+                            <li class="index_kxym index_kxym_bh"><a href="#">2</a></li>
+                            <li class="index_kxym index_kxym_bh"><a href="#">3</a></li>
+                            <li class="index_kxym index_kxym_bh"><a href="#">4</a></li>
+                            <li class="index_kxym index_kxym_bh"><a href="#">5</a></li>
+                            <li class="disabled"><a href="#">...</a></li>
+                            <li class="index_kxym"><a href="#">533</a></li>
+                            <li class="index_kxym_hf">
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li> -->
+                        </ul>
+                    </nav>
                 </div>
             </div>
 
@@ -198,7 +267,7 @@
     </div><!-- /#wrapper -->
 
     <!-- 添加商品弹出框 -->
-    <div class="modal fade" id="indextjsp" tabindex="-1" role="dialog" aria-labelledby="indextjspLabel">
+    <div class="modal fade" id="indextjsp" tabindex="-1" xgspid="" role="dialog" aria-labelledby="indextjspLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -214,14 +283,15 @@
                         <label for="indextjsp_an" class="indextjsp_ztcf">
                             <img src="spt/a1.jpg" class="img-rounded indextjsp_zt">
                         </label>
-                        <input id="indextjsp_an" type="file" style="display:none" name="indextjsp_zt" accept="image/jpeg" />
+                        <input id="indextjsp_an" type="file" style="display:none" name="zt" accept="image/jpeg" />
                     </div>
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">商品名称</label>
                         <div class="input-group">
                             <input type="text" class="form-control" id="indextjsp_mc" placeholder="20字以内，不包含符号。">
-                            <span class="input-group-addon" id="indextjsp_mc_ts" onkeyup="value=value.replace(/[^\w\u4E00-\u9FA5]/g, '')">输入字数 0/20</span>
+                            <span class="input-group-addon" id="indextjsp_mc_ts" onkeyup="value=value.replace(/[^\w\u4E00-\u9FA5]/g, '')">输入字数
+                                0/20</span>
                         </div>
                     </div>
                     <div class="row">
@@ -230,7 +300,8 @@
                                 <label for="exampleInputEmail1">价格</label>
                                 <div class="input-group">
                                     <span class="input-group-addon">￥</span>
-                                    <input type="text" onkeyup="value=value.replace(/[^\d.]/g,'')" class="form-control" id="indextjsp_mm" placeholder="">
+                                    <input type="text" onkeyup="value=value.replace(/[^\d.]/g,'')" class="form-control"
+                                        id="indextjsp_jg" placeholder="">
                                 </div>
                             </div>
                         </div>
@@ -239,7 +310,8 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">库存</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" onkeyup="this.value=this.value.replace(/\D/g,'')" id="indextjsp_mm" placeholder="">
+                                    <input type="text" class="form-control" onkeyup="this.value=this.value.replace(/\D/g,'')"
+                                        id="indextjsp_kc" placeholder="">
                                     <span class="input-group-addon">件</span>
                                 </div>
                             </div>
@@ -249,8 +321,8 @@
                     <div class="form-group">
                         <label for="exampleInputEmail1">是否上架</label>
 
-                        <select class="form-control" id="indextjsp_qx">
-                            <option>立即上架</option>
+                        <select class="form-control" id="indextjsp_sj">
+                            <option>上架</option>
                             <option>不上架</option>
                         </select>
 
@@ -261,7 +333,7 @@
 
 
                 <div class="modal-footer">
-                    <!-- <button type="button" class="btn btn-danger" style="float: left;" id="indextjsp_scyhy">删除用户</button> -->
+                    <button type="button" class="btn btn-danger" style="float: left;" id="index_spsp">删除商品</button>
                     <button type="button" class="btn btn-danger" style="float: left;display: none" id="indextjsp_scyhz">再次确认删除用户</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                     <button type="button" class="btn btn-primary" id="indextjsp_qdtj">确定</button>
