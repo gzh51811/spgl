@@ -50,10 +50,6 @@ function index_chaxu(req, res) {
                 })
             })
             //如果不存在返回no
-        } else {
-            res.send({
-                status: "no"
-            });
         }
     })
 }
