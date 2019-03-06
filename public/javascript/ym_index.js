@@ -838,52 +838,6 @@ $("#myTab").on("click", "li", function (e) {
             }
         })
 })
-//q全部订单 渲染封装
-// function render(goods) {
-//     var date = new Date(data.data.time * 1000);//如果date为13位不需要乘1000
-//     var Y = date.getFullYear() + '-';
-//     var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
-//     var D = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate()) + ' ';
-//     var h = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
-//     var m = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
-//     var s = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
-//     var time = Y + M + D + h + m + s;
-//     $.map(goods, function (value, index) {
-//         $(".tbody").append(
-//             `
-//                 <tr>
-//                     <td class="ddId">${data.data._id}</td>
-//                     <td class="spId">${order[index].spid}</td>
-//                     <td><img src="${data.data_sp.ztlj}"/></td>
-//                     <td>${data.data_sp.spbt}</td>
-//                     <td>${order[index].gmsl}</td>
-//                     <td>${data.data.state}</td>
-//                     <td>
-//                         ${time}
-//                     </td>
-//                     <td>
-//                         <button type="button" class="btn btn-default btn-xs userbjyh_tc change">修改</button>
-//                     </td>
-//                 </tr>
-//                 `
-//         )
-//     })
-// }
-// 全部订单 修改按钮
-// $(".tbody").on("click", ".change", function (e) {
-//     let change = $(this).text();
-//     let orderID=$(".ddId").text();
-//     let orderID=$(".spId").text();
-//     $.post("/qbdd", {
-//         sjnr: change,
-//     }, function (data) {
-
-//     })
-// })
-
-
-
-
 
 
 
