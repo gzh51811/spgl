@@ -1,6 +1,4 @@
 var mongodb_gnj = require('../mongodb_gnj');
-var EventEmitter = require('events').EventEmitter;
-var event = new EventEmitter();
 
 function index_glsj(req, res, urls) {
     //返回数据
