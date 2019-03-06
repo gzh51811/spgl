@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+  <title>SPGL-登陆</title>
+  <link rel="icon" href="images/wzss.png" type="image/x-icon"/> 
+  
+  <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css">
+  <!-- <link href="stylesheets/index.css" rel="stylesheet"> -->
+
+  <link rel="stylesheet" href="stylesheets/login.css">
+  <!-- <link rel="stylesheet" href="stylesheets/reset.css"> -->
+  <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+  <div class="container-fluid login_box">
+    <div class="login_box_fd">
+      <div class="login_box_fd_logo">
+        <h1>SPGL</h1>
+        <p>请登录进入管理后台</p>
+      </div>
+      <div class="login_box_fd_bd">
+        <form class="login_box_fd_bd_bds">
+          <div class="form-group">
+            <label for="exampleInputEmail1" class="control-label">Email 电子邮箱</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" name="emails">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1" class="control-label">密码</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="passwords">
+          </div>
+          <!-- <div class="checkbox">
+            <label>
+              <input type="checkbox"> 记住密码
+            </label>
+          </div> -->
+          <button type="button" class="btn btn-primary btn-block" disabled="disabled" id="ym_login_dl">登陆</button>
+        </form>
+        <p>管理员账号：940245@qq.com 密码：12345678</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery -->
+  <script src="javascript/jquery.js"></script>
+  <!-- 加载 Bootstrap 的所有 JavaScript 插件。 -->
+  <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+  <script src="javascript/common.js"></script>
+  <script src="javascript/ym_login.js"></script>
+
+</body>
+
+</html>

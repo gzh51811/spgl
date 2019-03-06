@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SPGL-用户中心</title>
+    <link rel="icon" href="images/wzss.png" type="image/x-icon"/> 
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link href="stylesheets/user.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/user">用户中心</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav" id="user_sjlb">
+
+                    <li class="active"><a href="javascript:;"><span class="glyphicon glyphicon-user" aria-hidden="true"
+                                style="cursor: pointer;margin-right: 5px"></span>
+                            个人信息</a>
+                    </li>
+
+                    <!-- <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-lock"
+                      aria-hidden="true" style="cursor: pointer;margin-right: 5px"></span>
+                    商品管理 <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">全部商品</a></li>
+                    <li><a href="#">添加商品</a></li>
+                  </ul>
+                </li> -->
+
+                    <% if (admin=="true") { %>
+                    <li><a href="javascript:;"><span class="glyphicon glyphicon-list" aria-hidden="true" style="cursor: pointer;margin-right: 5px"></span>
+                            全部账号</a>
+                    </li>
+                    <% } %>
+
+
+
+                    <!-- 可下拉 -->
+                    <!-- <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-caret-square-o-down"></i>
+                    Dropdown <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Dropdown Item</a></li>
+                    <li><a href="#">Another Item</a></li>
+                    <li><a href="#">Third Item</a></li>
+                    <li><a href="#">Last Item</a></li>
+                  </ul>
+                </li> -->
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right navbar-user">
+                    <li class="dropdown user-dropdown">
+                        <a href="javascript:;" id="user_tc"><span class="glyphicon glyphicon-log-out" aria-hidden="true"
+                                style="cursor: pointer;margin-right: 5px"></span>
+                            退出账号</a>
+                        <!-- <ul class="dropdown-menu">
+                            <li><a href="/user" target="_Blank"><span class="glyphicon glyphicon-user" aria-hidden="true" style="cursor: pointer;margin-right: 5px"></span>
+                                    用户中心</a></li>
+                            <li class="divider"></li>
+                            <li><a href="javascript:;" id="index_tc"><span class="glyphicon glyphicon-log-out" aria-hidden="true" style="cursor: pointer;margin-right: 5px"></span>
+                                    退出账号</a></li>
+                        </ul> -->
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="row" id="user_grxx">
+
+                <div class="col-lg-6 col-lg-offset-3 grxx">
+                    <h2 class="grxx_hoverbj">
+                        <%= name %>
+                        <a href="#usergryhmxg" data-toggle="modal" class="grxx_mzcpbj grxx_cpxs"><span class="glyphicon glyphicon-pencil"
+                                aria-hidden="true" style="cursor: pointer;margin-left: 5px"></span></a>
+                    </h2>
+                    <% if (admin=="true") { %>
+                    <span class="label label-primary">管理员</span>
+                    <% } %>
+                    <% if (admin!="true") { %>
+                    <span class="label label-primary">普通用户</span>
+                    <% } %>
+                    <br>
+                    <br>
+                    <dl>
+                        <dt>邮箱</dt>
+                        <dd class="grxx_hoverbj">
+                            <%= email %><a href="#usergryxxg" data-toggle="modal" class="grxx_yxcpbj grxx_cpxs"><span
+                                    class="glyphicon glyphicon-pencil" aria-hidden="true" style="cursor: pointer;margin-left: 5px"></span></a></dd>
+                    </dl>
+                    <button type="button" data-toggle="modal" data-target="#usergrmmxg" class="btn btn btn-default btn-xs"
+                        style="margin-bottom:26px">修改密码</button>
+                </div>
+            </div>
+
+            <div class="row" id="user_qbzh" style="display:none">
+
+                <div class="col-lg-12">
+
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid">
+
+
+                            <p class="navbar-text" id="user_sslx">搜索用户名</p>
+
+                            <form class="navbar-form navbar-left" style="padding:none" role="search">
+                                <div class="input-group">
+                                    <input id="user_syyhssk" type="text" class="form-control" aria-label="Text input with segmented button dropdown">
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn btn-default" id="user_ss">搜索</button>
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-right" id="user_ssktj">
+                                            <li><a href="#">搜索用户名</a></li>
+                                            <li><a href="#">搜索邮箱</a></li>
+                                        </ul>
+                                    </div>
+                                </div><!-- /.input-group -->
+                            </form>
+
+                            <button type="button" class="btn btn-default navbar-btn navbar-right" data-toggle="modal"
+                                data-target="#usertjyh" style="margin-right: 0;">添加用户</button>
+                            <button id="user_yhsx" type="button" class="btn btn-default navbar-btn navbar-right" style="margin-right: 15px;">刷新</button>
+
+
+
+                        </div>
+
+                    </nav>
+
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>用户名</th>
+                                <th>邮箱</th>
+                                <th>密码
+                                    <span id="usermmsx" class="glyphicon glyphicon-eye-close" aria-hidden="true" style="cursor: pointer;color: rgb(172, 172, 172);"></span>
+                                </th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="user_syyhlb">
+                            <!-- <tr>
+                            <td>1</td>
+                            <td><span>afsdfasdgasdfg</span>
+                                <span class="label label-primary" style="margin-left:5px">管理员</span>
+                            </td>
+                            <td>12345@qq.com</td>
+                            <td><span class="user_mmyc">●●●●●●●●●●●</span>
+                                <span style="display:none" class="user_mmxs">fadgdfgdfgdfgdffsd</span>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-default btn-xs userbjyh_tc">编辑用户</button>
+                            </td>
+                        </tr> -->
+                        </tbody>
+
+
+
+
+                    </table>
+
+                    <!-- 等待动画 -->
+
+                    <div class="user_login" style="display:none">
+                        <div class="loader loader--style1" title="loading...">
+                            <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40"
+                                xml:space="preserve">
+                                <path opacity="0.2" fill="#000" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946
+                                      s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634
+                                      c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z" />
+                                <path fill="#000" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0
+                                      C22.32,8.481,24.301,9.057,26.013,10.047z">
+                                    <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20"
+                                        to="360 20 20" dur="0.5s" repeatCount="indefinite" />
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div><!-- /#wrapper -->
+
+    <!-- 修改用户名弹出框 -->
+    <div class="modal fade" id="usergryhmxg" tabindex="-1" role="dialog" aria-labelledby="usergryhmxgLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="usergryhmxgLabel">修改用户名</h4>
+                </div>
+                <div class="modal-body usergryhmxg_modal_body">
+
+                    <div class="form-group">
+                        <label for="usergryhmxg_x">用户名</label>
+                        <input type="email" class="form-control" id="usergryhmxg_x" placeholder="输入新用户名">
+                    </div>
+
+                    <div class="alert alert-success" role="alert" id="usergryhmxg_ts" style="display:none;">用户名修改成功。</div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="usergryhmxg_qxxg">取消</button>
+                    <button type="button" class="btn btn-primary" id="usergryhmxg_qdxg">确定修改</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 修改邮箱弹出框 -->
+    <div class="modal fade" id="usergryxxg" tabindex="-1" role="dialog" aria-labelledby="usergryxxgLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="usergryxxgLabel">修改邮箱</h4>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">邮箱</label>
+                        <input type="email" class="form-control" id="usergryxxg_xyx" placeholder="输入新邮箱地址">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">密码验证</label>
+                        <input type="password" class="form-control" id="usergryxxg_mm" placeholder="输入当前账号密码">
+                    </div>
+
+                    <div class="alert alert-danger" role="alert" id="usergryxxg_ts" style="display:none;">邮箱格式错误，请重新输入。</div>
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="usergryxxg_qdxg">确定修改</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 修改密码弹出框 -->
+    <div class="modal fade" id="usergrmmxg" tabindex="-1" role="dialog" aria-labelledby="usergrmmxgLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="usergrmmxgLabel">修改密码</h4>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">原密码</label>
+                        <input type="email" class="form-control" id="usergrmmxg_ymm" placeholder="输入当前账号密码">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">新密码</label>
+                        <input type="password" class="form-control" id="usergrmmxg_xmm" placeholder="输入当前账号新密码">
+                    </div>
+
+                    <div class="alert alert-danger" role="alert" id="usergrmmxg_ts" style="display:none;">邮箱格式错误，请重新输入。</div>
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="usergrmmxg_qdxg">确定修改</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 用户弹出框 -->
+    <div class="modal fade" id="usertjyh" tabindex="-1" role="dialog" aria-labelledby="usertjyhLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="usertjyhLabel">添加用户</h4>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">用户名</label>
+                        <input type="text" class="form-control" id="usertjyh_yhm" placeholder="输入用户名，不能包含特殊字符。">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">邮箱</label>
+                        <input type="email" class="form-control" id="usertjyh_yx" placeholder="输入邮箱。">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">密码</label>
+                        <input type="password" class="form-control" id="usertjyh_mm" placeholder="输入密码，6位以上数字密码组合。">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">权限</label>
+
+                        <select class="form-control" id="usertjyh_qx">
+                            <option>普通用户</option>
+                            <option>管理员</option>
+                        </select>
+
+                    </div>
+
+                    <div class="alert alert-danger" role="alert" id="usertjyh_ts" style="display:none;">邮箱格式错误，请重新输入。</div>
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="usertjyh_qdtj">确定</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 编辑用户弹出框 -->
+    <div class="modal fade" id="userbjyh" tabindex="-1" role="dialog" aria-labelledby="userbjyhLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="userbjyhLabel">编辑用户</h4>
+                </div>
+                <div class="modal-body">
+
+                    <span id="userbjyh_bjyx" style="display:none"></span>
+                    <span id="userbjyh_yhmm" style="display:none"></span>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">用户名</label>
+                        <input type="text" class="form-control" id="userbjyh_yhm" placeholder="输入用户名，不能包含特殊字符。">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">邮箱</label>
+                        <input type="email" class="form-control" id="userbjyh_yx" placeholder="输入邮箱。">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">新密码</label>
+                        <input type="password" class="form-control" id="userbjyh_mm" placeholder="输入密码，6位以上数字密码组合。">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">权限</label>
+
+                        <select class="form-control" id="userbjyh_qx">
+                            <option>普通用户</option>
+                            <option>管理员</option>
+                        </select>
+
+                    </div>
+
+                    <div class="alert alert-danger" role="alert" id="userbjyh_ts" style="display:none;">邮箱格式错误，请重新输入。</div>
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" style="float: left;" id="userbjyh_scyhy">删除用户</button>
+                    <button type="button" class="btn btn-danger" style="float: left;display: none" id="userbjyh_scyhz">再次确认删除用户</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="userbjyh_qdtj">确定修改</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="javascript/jquery.js"></script>
+    <script src="javascript/ym_user.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+</body>
+
+</html>
