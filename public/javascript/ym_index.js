@@ -24,10 +24,10 @@ $("#index_tc").click(function (e) {
 //点击删除商品事件
 $("#index_spsp").click(function () {
     $.post("/ycsj", {
-            sjnr: "全部商品",
-            qqsj: "scsp",
-            spid: $("#indextjsp").attr("xgspid")
-        },
+        sjnr: "全部商品",
+        qqsj: "scsp",
+        spid: $("#indextjsp").attr("xgspid")
+    },
         function (data, status) {
             if (data == "ok") {
 
@@ -451,10 +451,10 @@ function index_splb(index_spxstj) {
     // 取消全选
     $("#index_splb_dx").prop("checked", false);
     $.get("/ycsj", {
-            sjnr: "全部商品",
-            qqsj: "splb",
-            index_spxstj
-        },
+        sjnr: "全部商品",
+        qqsj: "splb",
+        index_spxstj
+    },
         function (data) {
             console.log(JSON.parse(data))
             var data = JSON.parse(data);
@@ -513,7 +513,7 @@ function index_splb(index_spxstj) {
                 for (let i = 0; i < ymzs; i++) {
                     // 写入页码
                     $("#index_fybq ul").append(`
-                    <li class="index_kxym index_kxym_bh"><a href="#" bqlx="ym">${i+1}</a></li>
+                    <li class="index_kxym index_kxym_bh"><a href="#" bqlx="ym">${i + 1}</a></li>
                 `)
                 }
             } else if (ymzs > 6) {
@@ -553,7 +553,7 @@ function index_splb(index_spxstj) {
                     for (let i = 1; i < 6; i++) {
                         // 写入页码
                         $("#index_fybq ul").append(`
-                        <li class="index_kxym index_kxym_bh"><a href="#" bqlx="ym">${sss+i}</a></li>
+                        <li class="index_kxym index_kxym_bh"><a href="#" bqlx="ym">${sss + i}</a></li>
                     `)
                     }
 
@@ -639,10 +639,10 @@ $("#index_splbsj").click(function (e) {
     if (e.target.tagName == "BUTTON" && $(e.target).text() == "下架") {
         $(e.target).closest("tr").attr("spid")
         $.post("/ycsj", {
-                sjnr: "全部商品",
-                qqsj: "xjsp",
-                spid: $(e.target).closest("tr").attr("spid")
-            },
+            sjnr: "全部商品",
+            qqsj: "xjsp",
+            spid: $(e.target).closest("tr").attr("spid")
+        },
             function (data, status) {
                 console.log(data)
                 index_splb(index_spxstj);
@@ -678,10 +678,10 @@ function index_spsj(daat) {
     if (daat.length != 0) {
 
         $.post("/ycsj", {
-                sjnr: "全部商品",
-                qqsj: "sjsp",
-                sjsj: daat
-            },
+            sjnr: "全部商品",
+            qqsj: "sjsp",
+            sjsj: daat
+        },
             function (data, status) {
                 console.log(data)
                 index_splb(index_spxstj);
@@ -767,8 +767,6 @@ function index_sjxr() {
         $("#index_qbdd").css("display", "block");
     }
 }
-
-
 //全部订单代码==点击按钮获取内容
 $("#myTab").on("click", "li", function (e) {
     $('.tbody').html("");
@@ -778,19 +776,14 @@ $("#myTab").on("click", "li", function (e) {
     },
         function (data) {
             if (data.status == "ok") {
-                // console.log(data)
-                // console.log(data.data)
-                // console.log(data.data_sp)
                 //订单
                 var order = new Array();
                 order = data.data;
-                // console.log(order)
+                console.log(order)
                 //订单内商品信息
                 var goods = data.data_sp;
-                // console.log(goods)
                 //遍历订单
                 $.map(order, function (item, index) {
-                    // console.log(item)
                     //转换时间
                     var date = new Date(item.time * 1000);//如果date为13位不需要乘1000
                     var Y = date.getFullYear() + '-';
@@ -801,34 +794,49 @@ $("#myTab").on("click", "li", function (e) {
                     var s = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
                     var time = Y + M + D + h + m + s;
                     console.log(time)
-                    //订单id
-                    // var id=item._id
-                    // console.log(id)
-                    // //商品数量
-                    // var DDXX = item.ddxx;
-                    // $.map(DDXX, function (item, index) {
-                    //     var goodNum = item.gmsl
-                    //     // console.log(goodNum);
-                    //     //遍历订单内商品
-                    //     $.map(goods, function (item, idx) {
-                    //         console.log(goods)
-                    //         $(".tbody").append(`
+                    //订单内商品
+                    var orderSp = item.ddxx
+                    //渲染订单
+                    $(".ddMSg").append(`
+                    <table class="table table-hover ">  
+                        <thead class="thead ">
+                            <th>订单ID：${item._id}</th>
+                            <th>商品数量：${orderSp.length}</th>
+                            <th>订单状态：${item.state}</th>
+                            <th>创建时间：${time}</th>
+                        </thead>
+                    </table>
+                    `)
+                    //遍历商品信息
+                    // $.map(goods, function (item, index) {
+                    //     $(".ddMSg").append(`
+                    // <table class="table table-hover sptitle">
+                    //     <thead class="thead ">
                     //         <tr>
-                    //             <td class="ddId">${id}</td>
-                    //             <td class="spId">${goods[index]._id}</td>
-                    //             <td><img src="${goods[index].ztlj}"/></td>
-                    //             <td>${goods[index].spbt}</td>
-                    //             <td>${goodNum}</td>
-                    //             <td>${order[index].state}</td>
-                    //             <td>
-                    //                 ${time}
-                    //             </td>
+                    //             <th>#</th>
+                    //             <th>商品图片</th>
+                    //             <th>商品名称</th>
+                    //             <th>单价</th>
+                    //             <th>购买数量</th>
+                    //             <th>总价</th>
                     //         </tr>
-                    //     `)
-                    //     })
+                    //     </thead>
+                    //     <tbody>
+                    //         <tr>
+                    //             <td>1</td>
+                    //             <th>
+                    //                 <img src="${item.ztlj}"alt="">
+                    //             </th>
+                    //             <td>${item.spbt}</td>
+                    //             <td>${item.spjg}</td>
+                    //             <td>2</td>
+                    //             <td>￥132</td>
+                    //         </tr>
+                    //         </tbody>
+                    // `)
                     // })
-
                 })
+
             } else {
                 $(".tbody").append(
                     `
@@ -925,9 +933,9 @@ function index_sjyl() {
 
     //预览数据请求
     $.get("/ycsj", {
-            sjnr: "数据概览",
-            qqsj: "sjgl"
-        },
+        sjnr: "数据概览",
+        qqsj: "sjgl"
+    },
         function (data, status) {
             //改写图标数据
 

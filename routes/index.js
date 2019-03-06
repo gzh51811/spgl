@@ -87,8 +87,8 @@ router.post('/ycsj', function (req, res, next) {
 router.post('/qbdd', function (req, res, next) {
   // console.log(req.body.sjnr)
   var sjnr = req.body.sjnr;
-  if (sjnr == "修改") {
-    var index_change = require("../my_modules/index/index_change");
+  if (sjnr == "所有订单") {
+    var index_change = require("../my_modules/index/index_qbdd");
     index_change(req, res)
   }  else {
     var index_chaxu = require("../my_modules/index/index_chaxu");
