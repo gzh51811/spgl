@@ -83,6 +83,7 @@ function cx(dbnames, jhnames, objs, fs) {
             }
             fs(err, result);
             db.close();
+            return
         });
     });
 }

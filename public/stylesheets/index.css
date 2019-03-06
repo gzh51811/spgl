@@ -171,18 +171,40 @@ table.tablesorter thead tr th:hover {
   display: block;
 }
 
-.index_lbdhl_px span{
+.index_lbdhl_px span {
   cursor: pointer;
 }
-.index_lbdhl_px_xz{
+
+.index_lbdhl_px_xz {
   color: #337ab6
 }
+
 .index_login {
   width: 70px;
   height: 70px;
   margin: auto;
   margin-top: 10px;
 }
-.index_splb_bt{
+
+.index_splb_bt {
   max-width: 300px !important;
 }
+
+
+.index_sjyl_sjmb {
+  margin-top: 20px;
+}
+
+.index_sjyl_sjmb>div {
+  height: 140px;
+  margin-bottom: 20px
+}
+
+.index_sjyl_sjk {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.06);
+  background-color: white
+}
+

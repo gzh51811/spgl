@@ -782,15 +782,12 @@ window.randomScalingFactor = function () {
     return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
 };
 
-
-
-
 var pieConfig = {
     type: 'pie',
     data: {
         datasets: [{
             data: [
-                400, 300, 100, 800, 600
+                0, 0, 0, 0, 0
             ],
             backgroundColor: [
                 window.chartColors.red,
@@ -820,5 +817,58 @@ var pieConfig = {
     }
 };
 
-var pieCtx = document.getElementById("chartjs-pie-chart").getContext("2d");
-window.myPie = new Chart(pieCtx, pieConfig);
+var pieConfigs = {
+    type: 'pie',
+    data: {
+        datasets: [{
+            data: [
+                0, 0
+            ],
+            backgroundColor: [
+                window.chartColors.red,
+                window.chartColors.orange
+            ],
+            label: 'Dataset 1'
+        }],
+        labels: [
+            "出售中",
+            "已下架"
+        ]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        title: {
+            display: true,
+            text: '商品信息',
+            position: 'top'
+        }
+    }
+};
+
+// 订单查询
+function index_sjyl() {
+    console.log("收到上架商品数组")
+
+    //预览数据请求
+    $.get("/ycsj", {
+            sjnr: "数据概览",
+            qqsj: "sjgl"
+        },
+        function (data, status) {
+            //改写图标数据
+
+            var data = data;
+
+
+            pieConfigs.data.datasets[0].data = data.pieConfigs
+            pieConfig.data.datasets[0].data = data.pieConfig
+
+            //生成表单实例
+            var pieCtx = document.getElementById("chartjs-pie-chart").getContext("2d");
+            var pieCtxs = document.getElementById("chartjs-pie-chart2").getContext("2d");
+            window.myPie = new Chart(pieCtx, pieConfig);
+            window.myPie = new Chart(pieCtxs, pieConfigs);
+        });
+}
+index_sjyl()

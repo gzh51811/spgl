@@ -29,7 +29,13 @@ router.get('/ycsj', function (req, res, next) {
   var sjnr = req.query.sjnr;
 
   if (sjnr == "数据概览") {
+    if (req.query.qqsj == "sjgl") {
 
+      console.log("请求为获取概览数据")
+      var index_glsj = require('../my_modules/index/index_glsj');
+      index_glsj(req, res);
+
+    }
 
   } else if (sjnr == "全部商品") {
 
@@ -39,7 +45,7 @@ router.get('/ycsj', function (req, res, next) {
 
       var index_splbsj = require('../my_modules/index/index_splbsj');
       index_splbsj(req, res);
-
+      return
     }
 
   } else if (sjnr == "全部订单") {
