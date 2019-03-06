@@ -764,6 +764,7 @@ function index_sjxr() {
         $("#index_qbsp").css("display", "block");
         index_splb(index_spxstj)
     } else if (sx == "全部订单") {
+        index_ddlb("所有订单")
         $("#index_qbdd").css("display", "block");
     }
 }
@@ -771,73 +772,145 @@ function index_sjxr() {
 
 //全部订单代码==点击按钮获取内容
 $("#myTab").on("click", "li", function (e) {
-    $('.tbody').html("");
-    let liCotent = $(this).text();
+    console.log(e.target)
+    // let liCotent = $(this).text();
+    index_ddlb($.trim($(e.target).text()))
+})
+
+
+// 订单数据请求渲染
+function index_ddlb(datas) {
+
+    console.log("请求" + datas);
+    // 清空列表
+    $("#index_ddlb").html("")
+    //开启动画
+    $(".index_login").css("display", "block")
+
     $.post("/qbdd", {
-        sjnr: liCotent,
-    },
+            sjnr: datas,
+        },
         function (data) {
             if (data.status == "ok") {
-                // console.log(data)
-                // console.log(data.data)
-                // console.log(data.data_sp)
-                //订单
-                var order = new Array();
-                order = data.data;
-                // console.log(order)
-                //订单内商品信息
-                var goods = data.data_sp;
-                // console.log(goods)
-                //遍历订单
-                $.map(order, function (item, index) {
-                    // console.log(item)
-                    //转换时间
-                    var date = new Date(item.time * 1000);//如果date为13位不需要乘1000
-                    var Y = date.getFullYear() + '-';
-                    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
-                    var D = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate()) + ' ';
-                    var h = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
-                    var m = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
-                    var s = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
-                    var time = Y + M + D + h + m + s;
-                    console.log(time)
-                    //订单id
-                    // var id=item._id
-                    // console.log(id)
-                    // //商品数量
-                    // var DDXX = item.ddxx;
-                    // $.map(DDXX, function (item, index) {
-                    //     var goodNum = item.gmsl
-                    //     // console.log(goodNum);
-                    //     //遍历订单内商品
-                    //     $.map(goods, function (item, idx) {
-                    //         console.log(goods)
-                    //         $(".tbody").append(`
-                    //         <tr>
-                    //             <td class="ddId">${id}</td>
-                    //             <td class="spId">${goods[index]._id}</td>
-                    //             <td><img src="${goods[index].ztlj}"/></td>
-                    //             <td>${goods[index].spbt}</td>
-                    //             <td>${goodNum}</td>
-                    //             <td>${order[index].state}</td>
-                    //             <td>
-                    //                 ${time}
-                    //             </td>
-                    //         </tr>
-                    //     `)
-                    //     })
-                    // })
+                console.log(data)
 
-                })
+                //渲染订单列表
+                $.each(data.data, function (i, n) {
+                    // console.log(n)
+                    $("#index_ddlb").append(`
+                    <div class="index_dd_dgdd">
+                    <table class="table table-hover">
+                        <thead class="thead">
+                            <tr>
+                                <th>订单ID：${n._id}</th>
+                                <th>商品数量：${index_dd_spsljs(n.ddxx)}</th>
+                                <th>订单状态：${n.state}</th>
+                                <th>创建时间：${timetrans(n.time)}</th>
+                            </tr>
+                        </thead>
+                    </table>
+
+                    <table class="table table-hover">
+                        <thead class="thead">
+                            <tr>
+                                <th>#</th>
+                                <th>商品图片</th>
+                                <th>商品名称</th>
+                                <th>单价</th>
+                                <th>购买数量</th>
+                                <th>总价</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        ${index_dd_lbcl1(data,n._id)}
+                        
+                        </tbody>
+
+                    </table>
+
+                </div>
+            `)
+                });
+
+
+
+                //关闭动画
+                $(".index_login").css("display", "none")
             } else {
-                $(".tbody").append(
-                    `
-                    <h1>木有数据哦</h1>
-                    `
-                )
+                console.log("没有数据")
             }
         })
-})
+
+
+}
+// 商品数量
+function index_dd_spsljs(data) {
+    var dssl = 0;
+    $.each(data, function (i, n) {
+        dssl += n.gmsl*1
+    })
+    return dssl
+}
+
+//订单商品处理 
+function index_dd_lbcl1(data, dqid) {
+    //获取当前订单 需要显示的商品id
+
+    var fh = "";
+    // 循环所有订单列表 查找当前订单包含的商品
+    $.each(data.data, function (i, n) {
+        if (n._id == dqid) {
+            //进入当前订单数据
+
+            // console.log(dqid)
+
+            //商品编码
+            var spbmm = 1
+            //循环当前订单  商品列表
+            $.each(n.ddxx, function (i, n) {
+                // console.log(n)
+                //当前商品 购买数量
+                var spsl = n.gmsl;
+                //当前商品id
+                var dqspid = n.spid
+
+                //商品获取限制
+                var bm = 1;
+                //使用当前商品id 循环 所有商品
+                $.each(data.data_sp, function (i, n) {
+                    if (dqspid == n[0]._id && bm == 1) {
+                        // console.log(n[0])
+                        //当前商品为 订单商品 开始写入数据
+
+                        var sj = `
+                                    <tr>
+                                       <td>${spbmm}</td>
+                                        <th>
+                                       <img src="${n[0].ztlj}" alt="">
+                                       </th>
+                                        <td>${n[0].spbt}</td>
+                                        <td>￥${n[0].spjg}</td>
+                                         <td>${spsl}</td>
+                                           <td>￥${n[0].spjg*spsl}</td>
+                                          </tr>
+                                    `
+
+                        //将当前商品输入加入当前订单商品总数据
+                        fh += sj
+                        bm++
+                        spbmm++
+                    }
+                })
+            })
+
+
+        }
+    })
+    // console.log(fh)
+    return fh
+
+}
 
 
 
