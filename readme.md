@@ -8,7 +8,7 @@ WuTong , ZhangMinFang
 SPGL.xxlxxlxx.com
 
 ## 目录结构组织
-
+```
 │  app.js
 │  package-lock.json
 │  package.json
@@ -115,3 +115,4 @@ SPGL.xxlxxlxx.com
         index.ejs
         login.ejs
         user.ejs
+```
