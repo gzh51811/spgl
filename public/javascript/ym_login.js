@@ -114,6 +114,6 @@ function login_indlzt() {
     $("#ym_login_dl").attr("disabled", false);
     $("#ym_login_dl").text("登陆成功，即将跳转。");
     setTimeout(function () {
-        $(location).attr('href', '/');
+        window.location.reload();
     }, 900);
 }

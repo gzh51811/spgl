@@ -15,7 +15,7 @@ $("#user_tc").click(function (e) {
     $.post("/login/tc", function (data, status) {
         // console.log(data)
         setTimeout(function () {
-            $(location).attr('href', '/');
+            window.location.reload();
         }, 100);
     });
 });
@@ -87,7 +87,7 @@ $("#usergryhmxg_qdxg").click(function (e) {
 
                     //一秒后刷新页面
                     setTimeout(function () {
-                        $(location).attr('href', '/user');
+                        window.location.reload();
                     }, 1000);
 
                 } else {
@@ -142,7 +142,7 @@ $("#usergryxxg_qdxg").click(function (e) {
 
                     //一秒后刷新页面
                     setTimeout(function () {
-                        $(location).attr('href', '/user');
+                        window.location.reload();
                     }, 1000);
 
                 } else {
@@ -199,7 +199,7 @@ $("#usergrmmxg_qdxg").click(function (e) {
 
                     //一秒后刷新页面
                     setTimeout(function () {
-                        $(location).attr('href', '/user');
+                        window.location.reload();
                     }, 1000);
 
                 } else {

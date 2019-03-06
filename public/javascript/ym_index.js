@@ -15,7 +15,7 @@ $("#index_tc").click(function (e) {
     $.post("/login/tc", function (data, status) {
         // console.log(data)
         setTimeout(function () {
-            $(location).attr('href', '/');
+            window.location.reload();
         }, 100);
     });
 });
