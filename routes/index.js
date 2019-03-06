@@ -61,5 +61,17 @@ router.post('/ycsj', function (req, res, next) {
   }
 
 })
+//全部订单
+router.post('/qbdd', function (req, res, next) {
+  // console.log(req.body.sjnr)
+  var sjnr = req.body.sjnr;
+  if (sjnr == "修改") {
+    var index_change = require("../my_modules/index/index_change");
+    index_change(req, res)
+  }  else {
+    var index_chaxu = require("../my_modules/index/index_chaxu");
+    index_chaxu(req, res)
+  }
+})
 
 module.exports = router;

@@ -83,13 +83,13 @@ $("#indextjsp_qdtj").click(function (e) {
 
     if ($("#indextjsp input").val() != "") {
         $.post("/ycsj", {
-                sjnr: "全部商品",
-                qqsj: "fbsp",
-                // yhm: $.trim($("#usertjyh_yhm").val()),
-                // yx: $.trim($("#usertjyh_yx").val()),
-                // mm: $.trim($("#usertjyh_mm").val()),
-                // qx: $.trim($("#usertjyh_qx").val())
-            },
+            sjnr: "全部商品",
+            qqsj: "fbsp",
+            // yhm: $.trim($("#usertjyh_yhm").val()),
+            // yx: $.trim($("#usertjyh_yx").val()),
+            // mm: $.trim($("#usertjyh_mm").val()),
+            // qx: $.trim($("#usertjyh_qx").val())
+        },
             function (data, status) {
                 console.log(data)
                 if (data == "ok") {
@@ -173,18 +173,125 @@ function index_sjxr() {
     }
 }
 
-//点击按钮获取内容
+
+//全部订单代码==点击按钮获取内容
 $("#myTab").on("click", "li", function (e) {
+    $('.tbody').html("");
     let liCotent = $(this).text();
-    console.log(liCotent)
-    $.post("/ycsj", {
+    $.post("/qbdd", {
         sjnr: liCotent,
     },
-    function (data, status) {
+        function (data) {
+            if (data.status == "ok") {
+                // console.log(data)
+                // console.log(data.data)
+                // console.log(data.data_sp)
+                //订单
+                var order = new Array();
+                order = data.data;
+                // console.log(order)
+                //订单内商品信息
+                var goods = data.data_sp;
+                // console.log(goods)
+                //遍历订单
+                $.map(order, function (item, index) {
+                    // console.log(item)
+                    //转换时间
+                    var date = new Date(item.time * 1000);//如果date为13位不需要乘1000
+                    var Y = date.getFullYear() + '-';
+                    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+                    var D = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate()) + ' ';
+                    var h = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
+                    var m = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
+                    var s = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
+                    var time = Y + M + D + h + m + s;
+                    console.log(time)
+                    //订单id
+                    // var id=item._id
+                    // console.log(id)
+                    // //商品数量
+                    // var DDXX = item.ddxx;
+                    // $.map(DDXX, function (item, index) {
+                    //     var goodNum = item.gmsl
+                    //     // console.log(goodNum);
+                    //     //遍历订单内商品
+                    //     $.map(goods, function (item, idx) {
+                    //         console.log(goods)
+                    //         $(".tbody").append(`
+                    //         <tr>
+                    //             <td class="ddId">${id}</td>
+                    //             <td class="spId">${goods[index]._id}</td>
+                    //             <td><img src="${goods[index].ztlj}"/></td>
+                    //             <td>${goods[index].spbt}</td>
+                    //             <td>${goodNum}</td>
+                    //             <td>${order[index].state}</td>
+                    //             <td>
+                    //                 ${time}
+                    //             </td>
+                    //         </tr>
+                    //     `)
+                    //     })
+                    // })
 
-    })
-
+                })
+            } else {
+                $(".tbody").append(
+                    `
+                    <h1>木有数据哦</h1>
+                    `
+                )
+            }
+        })
 })
+//q全部订单 渲染封装
+// function render(goods) {
+//     var date = new Date(data.data.time * 1000);//如果date为13位不需要乘1000
+//     var Y = date.getFullYear() + '-';
+//     var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+//     var D = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate()) + ' ';
+//     var h = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
+//     var m = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
+//     var s = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
+//     var time = Y + M + D + h + m + s;
+//     $.map(goods, function (value, index) {
+//         $(".tbody").append(
+//             `
+//                 <tr>
+//                     <td class="ddId">${data.data._id}</td>
+//                     <td class="spId">${order[index].spid}</td>
+//                     <td><img src="${data.data_sp.ztlj}"/></td>
+//                     <td>${data.data_sp.spbt}</td>
+//                     <td>${order[index].gmsl}</td>
+//                     <td>${data.data.state}</td>
+//                     <td>
+//                         ${time}
+//                     </td>
+//                     <td>
+//                         <button type="button" class="btn btn-default btn-xs userbjyh_tc change">修改</button>
+//                     </td>
+//                 </tr>
+//                 `
+//         )
+//     })
+// }
+// 全部订单 修改按钮
+// $(".tbody").on("click", ".change", function (e) {
+//     let change = $(this).text();
+//     let orderID=$(".ddId").text();
+//     let orderID=$(".spId").text();
+//     $.post("/qbdd", {
+//         sjnr: change,
+//     }, function (data) {
+
+//     })
+// })
+
+
+
+
+
+
+
 window.chartColors = {
     red: 'rgb(255, 99, 132)',
     orange: 'rgb(255, 159, 64)',
