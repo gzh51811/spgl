@@ -24,10 +24,10 @@ $("#index_tc").click(function (e) {
 //点击删除商品事件
 $("#index_spsp").click(function () {
     $.post("/ycsj", {
-            sjnr: "全部商品",
-            qqsj: "scsp",
-            spid: $("#indextjsp").attr("xgspid")
-        },
+        sjnr: "全部商品",
+        qqsj: "scsp",
+        spid: $("#indextjsp").attr("xgspid")
+    },
         function (data, status) {
             if (data == "ok") {
 
@@ -451,10 +451,10 @@ function index_splb(index_spxstj) {
     // 取消全选
     $("#index_splb_dx").prop("checked", false);
     $.get("/ycsj", {
-            sjnr: "全部商品",
-            qqsj: "splb",
-            index_spxstj
-        },
+        sjnr: "全部商品",
+        qqsj: "splb",
+        index_spxstj
+    },
         function (data) {
             console.log(JSON.parse(data))
             var data = JSON.parse(data);
@@ -513,7 +513,7 @@ function index_splb(index_spxstj) {
                 for (let i = 0; i < ymzs; i++) {
                     // 写入页码
                     $("#index_fybq ul").append(`
-                    <li class="index_kxym index_kxym_bh"><a href="#" bqlx="ym">${i+1}</a></li>
+                    <li class="index_kxym index_kxym_bh"><a href="#" bqlx="ym">${i + 1}</a></li>
                 `)
                 }
             } else if (ymzs > 6) {
@@ -553,7 +553,7 @@ function index_splb(index_spxstj) {
                     for (let i = 1; i < 6; i++) {
                         // 写入页码
                         $("#index_fybq ul").append(`
-                        <li class="index_kxym index_kxym_bh"><a href="#" bqlx="ym">${sss+i}</a></li>
+                        <li class="index_kxym index_kxym_bh"><a href="#" bqlx="ym">${sss + i}</a></li>
                     `)
                     }
 
@@ -639,10 +639,10 @@ $("#index_splbsj").click(function (e) {
     if (e.target.tagName == "BUTTON" && $(e.target).text() == "下架") {
         $(e.target).closest("tr").attr("spid")
         $.post("/ycsj", {
-                sjnr: "全部商品",
-                qqsj: "xjsp",
-                spid: $(e.target).closest("tr").attr("spid")
-            },
+            sjnr: "全部商品",
+            qqsj: "xjsp",
+            spid: $(e.target).closest("tr").attr("spid")
+        },
             function (data, status) {
                 console.log(data)
                 index_splb(index_spxstj);
@@ -678,10 +678,10 @@ function index_spsj(daat) {
     if (daat.length != 0) {
 
         $.post("/ycsj", {
-                sjnr: "全部商品",
-                qqsj: "sjsp",
-                sjsj: daat
-            },
+            sjnr: "全部商品",
+            qqsj: "sjsp",
+            sjsj: daat
+        },
             function (data, status) {
                 console.log(data)
                 index_splb(index_spxstj);
@@ -768,8 +768,6 @@ function index_sjxr() {
         $("#index_qbdd").css("display", "block");
     }
 }
-
-
 //全部订单代码==点击按钮获取内容
 $("#myTab").on("click", "li", function (e) {
     console.log(e.target)
@@ -998,9 +996,9 @@ function index_sjyl() {
 
     //预览数据请求
     $.get("/ycsj", {
-            sjnr: "数据概览",
-            qqsj: "sjgl"
-        },
+        sjnr: "数据概览",
+        qqsj: "sjgl"
+    },
         function (data, status) {
             //改写图标数据
 
