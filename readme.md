@@ -9,16 +9,16 @@ SPGL.xxlxxlxx.com
 
 ## 目录结构组织
 ```
-│  app.js
+│  app.js       //app
 │  package-lock.json
 │  package.json
 │  readme.md
 │  _config.yml
 │
 ├─bin
-│      www
+│      www      //项目启动文件
 │
-├─my_modules
+├─my_modules    //自定义模块
 │  │  login_dl.js
 │  │  mongodb_gnj.js
 │  │
@@ -47,7 +47,7 @@ SPGL.xxlxxlxx.com
 │          user_yhmxg.js
 │          user_yxxg.js
 │
-├─public
+├─public        //静态资源文件
 │  ├─bootstrap-3.3.7-dist
 │  │  ├─css
 │  │  │      bootstrap-theme.css
@@ -74,43 +74,30 @@ SPGL.xxlxxlxx.com
 │  ├─Chart
 │  │      Chart.min.js
 │  │
-│  ├─images
-│  │      lbbj.jpg
-│  │      lbbj.png
-│  │      loginbg2.jpg
-│  │      loginbg3.jpg
-│  │      logo_bg.jpg
-│  │      wzss.png
+│  ├─images     //网站页面图片
 │  │
-│  ├─javascript
+│  ├─javascript         //页面js文件
 │  │      common.js
 │  │      jquery.js
 │  │      ym_index.js
 │  │      ym_login.js
 │  │      ym_user.js
 │  │
-│  ├─spt
-│  │      26355794.jfif
-│  │      a1.jpg
-│  │      zt-1551789703475.jpg
-│  │      zt-1551791123776.jpg
-│  │      zt-1551791272559.jpg
-│  │      zt-1551791361819.jpg
-│  │      zt-1551791392237.jpg
+│  ├─spt        //商品图片文件夹
 │  │
-│  └─stylesheets
+│  └─stylesheets        //样式文件
 │          index.css
 │          login.css
 │          reset.css
 │          style.css
 │          user.css
 │
-├─routes
+├─routes        //路由文件
 │      index.js
 │      login.js
 │      user.js
 │
-└─views
+└─views         //页面文件
         error.ejs
         index.ejs
         login.ejs
